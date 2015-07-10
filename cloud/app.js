@@ -28,7 +28,7 @@ app.post('/login', function(req, res) {
 		console.log('signin successfully: %j', req.AV.user);
     	res.redirect('/profile');
 	},function(error) {
-		res.redirect('/login');
+		res.redirect('/hello');
 	});
 });
 
