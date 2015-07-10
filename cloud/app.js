@@ -2,6 +2,13 @@
 var express = require('express');
 var AV = require('leanengine');
 var app = express();
+var AV = require('leanengine');
+
+var APP_ID = process.env.LC_APP_ID || 'k3nd81u9ze5gwxxhx0mrwt8bcmce9k55lxn8vny9o27n88tr'; // your app id
+var APP_KEY = process.env.LC_APP_KEY || 'pbvztq1cktzh2i3hauk5h50uudwxe8t2uxuo1pggom1bvt8m'; // your app key
+var MASTER_KEY = process.env.LC_APP_MASTER_KEY || ''; // your app master key
+
+AV.initialize(APP_ID, APP_KEY, MASTER_KEY);
 
 // App 全局配置
 app.set('views','cloud/views');   // 设置模板目录
