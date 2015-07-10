@@ -1,0 +1,243 @@
+<html>
+<head>
+	<title>聊天室</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="../css/font-awesome.css">
+	<link rel="stylesheet" href="../css/animate.css">
+	<!--[if IE 7]>
+			  <link rel="stylesheet" href="http://www.chatib.com/assets/css/font-awesome-ie7.min.css">
+			<![endif]-->
+</head>
+
+<body>
+
+<div class='container'>
+ 
+	<div class="navbar navbar-default">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Chatib</a>
+		</div>
+		<div class="navbar-collapse collapse navbar-right">
+			<ul class="nav navbar-nav">
+				<li><a href="./signup_form"><i class="icon-star gold"></i> 注册</a></li>
+				<li><a href="./my_profile"><i class="icon-gear"></i> 设置</a></li>
+				<li><a href="/logout"><i class="icon-off"></i> 退出</a></li>
+			</ul>
+		</div> 
+	</div>
+
+	<div class="col-md-12  chat_box_container ">
+		<div class="row">
+			<div class='connected_container'>
+				
+				<div class="col-md-4 left_part">
+				<div class="panel top-controls">
+				<div class="panel-body row">
+				<a href="#" class="col-xs-2" title="Preview Page" onclick="prevPage(); return false;">
+				<i class="icon-chevron-left icon-2x"></i>
+				</a>
+				<a href="#" class="col-xs-2" title="1st page of connected users" onclick="home(); return false;">
+				<i class="icon-home icon-2x"></i>
+				</a>
+				 
+				<a href="#" class="col-xs-2" title="Chat History" onclick="getHistory(); return false;">
+				<i class="icon-th-list icon-2x"></i>
+				</a>
+				<a href="#" class="col-xs-2 messages" title="Inbox" onclick="getInbox(); return false;" style="color: rgb(66, 139, 202);">
+				<i class="icon-envelope icon-2x"></i>
+				</a>
+				<a href="#" class="col-xs-2 gold" title="Search" onclick="getSearchForm(); return false;">
+				<i class="icon-search icon-2x"></i>
+				</a>
+				<a href="#" class="col-xs-2" title="Next Page" onclick="nextPage(); return false;">
+				<i class="icon-chevron-right icon-2x"></i>
+				</a>
+				</div>
+				</div>
+				<div class="list-group connected_users  ">
+				<h4 class="text-center"><i class="icon-home"></i> 824 Online </h4>
+				<a href="#" onclick="chatWithMe(this); return false;" data-id="6102639" data-age="43" data-username="Wifeadrunk😡" data-city="Alabama" data-country="United States" data-sexe="male" class="list-group-item homme">
+				<img class="img-thumbnail small" src="http://www.chatib.com/assets/img/male_small.png">
+				<h4 class="list-group-item-heading">Wifeadrunk😡 </h4>
+				<p class="list-group-item-text">
+				43 y, Alabama, United States
+				</p>
+				<i class="icon-chevron-right"></i>
+				</a>
+				<a href="#" onclick="chatWithMe(this); return false;" data-id="6104219" data-age="57" data-username="raycer" data-city="Alabama" data-country="United States" data-sexe="male" class="list-group-item homme">
+				<img class="img-thumbnail small" src="http://www.chatib.com/assets/img/male_small.png">
+				<h4 class="list-group-item-heading">raycer </h4>
+				<p class="list-group-item-text">
+				57 y, Alabama, United States
+				</p>
+				<i class="icon-chevron-right"></i>
+				</a>
+				<a href="#" onclick="chatWithMe(this); return false;" data-id="3769800" data-age="30" data-username="angela52" data-city="Alabama" data-country="United States" data-sexe="female" class="list-group-item femme">
+				<img class="img-thumbnail small" src="http://www.chatib.com/assets/img/female_small.png">
+				<h4 class="list-group-item-heading">angela52 <i class="icon-star gold"></i> </h4>
+				<p class="list-group-item-text">
+				30 y, Alabama, United States
+				</p>
+				<i class="icon-chevron-right"></i>
+				</a>
+				<a href="#" onclick="chatWithMe(this); return false;" data-id="6103957" data-age="40" data-username="Mydckurpsy" data-city="Alabama" data-country="United States" data-sexe="male" class="list-group-item homme">
+				<img class="img-thumbnail small" src="http://www.chatib.com/assets/img/male_small.png">
+				<h4 class="list-group-item-heading">Mydckurpsy </h4>
+				<p class="list-group-item-text">
+				40 y, Alabama, United States
+				</p>
+				<i class="icon-chevron-right"></i>
+				</a>
+				<a href="#" onclick="chatWithMe(this); return false;" data-id="6103980" data-age="24" data-username="Whatsurkik" data-city="Alabama" data-country="United States" data-sexe="male" class="list-group-item homme">
+				<img class="img-thumbnail small" src="http://www.chatib.com/assets/img/male_small.png">
+				<h4 class="list-group-item-heading">Whatsurkik </h4>
+				<p class="list-group-item-text">
+				24 y, Alabama, United States
+				</p>
+				<i class="icon-chevron-right"></i>
+				</a>
+				<a href="#" onclick="chatWithMe(this); return false;" data-id="6102493" data-age="31" data-username="Maxwell1234" data-city="Alabama" data-country="United States" data-sexe="male" class="list-group-item homme">
+				<img class="img-thumbnail small" src="http://www.chatib.com/assets/img/male_small.png">
+				<h4 class="list-group-item-heading">Maxwell1234 </h4>
+				<p class="list-group-item-text">
+				31 y, Alabama, United States
+				</p>
+				<i class="icon-chevron-right"></i>
+				</a>
+				<a href="#" onclick="chatWithMe(this); return false;" data-id="6104380" data-age="45" data-username="Wifeynhubby" data-city="Alabama" data-country="United States" data-sexe="female" class="list-group-item femme">
+				<img class="img-thumbnail small" src="http://www.chatib.com/assets/img/male_small.png">
+				<h4 class="list-group-item-heading">Wifeynhubby </h4>
+				<p class="list-group-item-text">
+				45 y, Alabama, United States
+				</p>
+				<i class="icon-chevron-right"></i>
+				</a>
+				</div>
+				<div class="panel bottom-controls">
+				<div class="panel-body row">
+				<div class="col-xs-3 text-left">
+				darren_fu </div>
+				<div class="col-xs-2">
+				<a href="#" class="col-xs-2" alt="Previous Page" onclick="prevPage(); return false;">
+				<i class="icon-chevron-left icon-2x"></i>
+				</a>
+				</div>
+				<div class="col-xs-2">
+				<a href="#" class="col-xs-2" title="Refresh Users List" onclick="refresh(); return false;">
+				<i class="icon-refresh icon-2x"></i>
+				</a>
+				</div>
+				<div class="col-xs-2">
+				<a href="#" class="col-xs-2" title="Next Page" onclick="nextPage(); return false;">
+				<i class="icon-chevron-right icon-2x"></i>
+				</a>
+				</div>
+				<div class="col-xs-3 text-right">
+				Page 1/<span class="totalPages">118</span>
+				</div>
+				</div>
+				</div>
+				</div>
+
+			</div>
+			<div class="col-md-8 right_part hidden-sm">
+				<div class="chatbox_body hidden-xs">
+					<div class="row">
+						<div class="col-md-12 top_ads">
+							<p class="alert alert-info intro">
+							<strong style='font-size:20px;'><img class="img-thumbnail pull-right" src="http://www.chatib.com/assets/img/male_small.png"/> Welcome darren_fu among us!</strong><br/><br/>
+							Chatib is the best place to find new people around you & make new friendships!
+							</p>
+						</div>
+						<div class="col-md-12 body_ads toggle">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 medium_and_large">
+								</div>
+								<div class='col-lg-12 visible-lg large'>
+								</div>
+							</div>
+						</div>
+						<div class="chat_container col-lg-12 toggle">
+							<div class="alert alert-info intro">
+								<ul>
+								<li>Chatib is FREE! & will always stay free :)</li>
+								<li>Chatib is Mobile friendly! so you can use it on your smartphone easily!</li>
+								<li><a href='#'><b><u>Register for free</u></b></a> to reserve your username & change your profile picture!</li>
+								<li>Start chatting by choosing a person from the list & say Hi!</li>
+								<li>Well, Enjoy your time!</li>
+								</ul>
+							</div>
+							<p class="alert alert-warning intro">
+							<strong>NOTE : </strong> You will be automatically disconnected after a long time of inactivity<br/>
+							</p>
+							<div class="chat_messages hideme" id="chat_messages">
+							<div class="panel">
+								<div class="panel-body">
+									<h4>Username</h4>
+									<span>Infos</span> <a href="#" class='label label-danger block_person'><i class="icon-remove"></i> block this person </a>
+									<div class='user_pic'>
+									</div>
+								</div>
+							</div>
+							<div class="messages_container" id="messages_container">
+							</div>
+							<div class="chat_input">
+								<div class="alert alert-success hideme"><strong>Good!</strong> You message have been sent successfully!</div>
+								<form name='msg' id='msg'>
+									<!--
+									<div class="smilies">
+										<table align="center" cellpadding="4" class="mytable">
+											<tbody>
+											<tr>
+											<td><a href="javascript:void(0);" onclick="insert_smiley(':-)', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/grin.gif" width="19" height="19" alt="grin" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':lol:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/lol.gif" width="19" height="19" alt="LOL" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':cheese:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/cheese.gif" width="19" height="19" alt="cheese" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':)', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/smile.gif" width="19" height="19" alt="smile" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(';-)', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/wink.gif" width="19" height="19" alt="wink" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':smirk:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/smirk.gif" width="19" height="19" alt="smirk" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':roll:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/rolleyes.gif" width="19" height="19" alt="rolleyes" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':-S', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/confused.gif" width="19" height="19" alt="confused" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':wow:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/surprise.gif" width="19" height="19" alt="surprised" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':bug:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/bigsurprise.gif" width="19" height="19" alt="big surprise" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':-P', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/tongue_laugh.gif" width="19" height="19" alt="tongue laugh" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley('%-P', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/tongue_rolleye.gif" width="19" height="19" alt="tongue rolleye" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(';-P', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/tongue_wink.gif" width="19" height="19" alt="tongue wink" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':P', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/raspberry.gif" width="19" height="19" alt="raspberry" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':blank:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/blank.gif" width="19" height="19" alt="blank stare" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':long:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/longface.gif" width="19" height="19" alt="long face" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':ohh:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/ohh.gif" width="19" height="19" alt="ohh" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':grrr:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/grrr.gif" width="19" height="19" alt="grrr" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':gulp:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/gulp.gif" width="19" height="19" alt="gulp" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley('8-/', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/ohoh.gif" width="19" height="19" alt="oh oh" style="border:0;"/></a></td></tr>
+											<tr>
+											<td><a href="javascript:void(0);" onclick="insert_smiley(':down:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/downer.gif" width="19" height="19" alt="downer" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':red:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/embarrassed.gif" width="19" height="19" alt="red face" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':sick:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/sick.gif" width="19" height="19" alt="sick" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':shut:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/shuteye.gif" width="19" height="19" alt="shut eye" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':-/', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/hmm.gif" width="19" height="19" alt="hmmm" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley('>:(', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/mad.gif" width="19" height="19" alt="mad" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley('>:-(', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/angry.gif" width="19" height="19" alt="angry" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':zip:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/zip.gif" width="19" height="19" alt="zipper" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':kiss:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/kiss.gif" width="19" height="19" alt="kiss" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':ahhh:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/shock.gif" width="19" height="19" alt="shock" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':coolsmile:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/shade_smile.gif" width="19" height="19" alt="cool smile" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':coolsmirk:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/shade_smirk.gif" width="19" height="19" alt="cool smirk" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':coolgrin:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/shade_grin.gif" width="19" height="19" alt="cool grin" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':coolhmm:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/shade_hmm.gif" width="19" height="19" alt="cool hmm" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':coolmad:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/shade_mad.gif" width="19" height="19" alt="cool mad" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':coolcheese:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/shade_cheese.gif" width="19" height="19" alt="cool cheese" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':vampire:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/vampire.gif" width="19" height="19" alt="vampire" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':snake:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/snake.gif" width="19" height="19" alt="snake" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':exclaim:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/exclaim.gif" width="19" height="19" alt="excaim" style="border:0;"/></a></td><td><a href="javascript:void(0);" onclick="insert_smiley(':question:', 'msg_content')"><img src="http://www.chatib.com/assets/img/smileys/question.gif" width="19" height="19" alt="question" style="border:0;"/></a></td></tr>
+											</tbody>
+										</table> 
+									</div>
+								-->
+									<input type='text' class="form-control msg_content" name='msg_content' id='msg_content' palceholder='say hi!'/>
+									<a class="btn btn-info" href="#" onclick="$('.smilies').toggle(); return false;">&nbsp;<i class='icon-smile'></i>&nbsp;</a>
+									<a class="btn btn-success sendMsg" href="#" onclick="sendMsg(); return false;">发送</a>
+									<div class="clear"></div>
+								</form>
+								</div>
+
+							</div>
+						</div>
+						<div class="inbox_container col-md-12 toggle"></div>
+						<div class="search_form_container col-md-12 toggle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+	<div class="container">
+		<div class="row">
+			<hr/>
+			<div class="col-lg-12 text-center">
+				<a href="#">FAQ</a> -
+				<a href="#">Privacy Policy</a> -
+				<a href="#">Contact</a><br/>
+				wexmarket.com 2009 - 2015 &copy;
+				<br/><br/>
+			</div>
+		</div>
+	</div>
+
+<script src="../js/jquery-1.9.1.min.js" charset="utf-8"></script>
+<script src="../js/bootstrap.min.js" charset="utf-8"></script>
+<script src="../js/custom.js" charset="utf-8"></script>
+<script src="../js/desk.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/onlyChat.js"></script>
+</body>
+
+</html>
