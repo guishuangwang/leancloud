@@ -32,7 +32,8 @@ app.post('/login', function(req, res) {
 	AV.User.logIn(req.body.username, req.body.password).then(function() {
 		//登录成功，AV.Cloud.CookieSession 会自动将登录用户信息存储到 cookie跳转到profile页面。
 		console.log('signin successfully: %j', req.AV.user);
-    	res.redirect('/profile');
+    	//res.redirect('/profile');
+    	res.render('chat.ejs');
 	},function(error) {
 		res.redirect('/hello');
 	});
