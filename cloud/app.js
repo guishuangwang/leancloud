@@ -39,10 +39,10 @@ app.post('/login', function(req, res) {
 	AV.User.logIn(req.body.username, req.body.password).then(function() {
 		query.find({
 			success:function(results) {
-				chatRooms = [{"tr":true,"name":"OpenConf","objectId":"559e314ae4b0796c1960d7f4","createdAt":"2015-07-09T08:31:06.043Z","updatedAt":"2015-07-09T08:31:06.043Z"},{"tr":true,"name":"股票","objectId":"559e37a1e4b0796c196157c7","createdAt":"2015-07-09T08:58:09.104Z","updatedAt":"2015-07-09T08:58:09.104Z"},{"tr":true,"name":"期货","objectId":"559e37bce4b0796c196159a3","createdAt":"2015-07-09T08:58:36.434Z","updatedAt":"2015-07-09T08:58:36.434Z"},{"tr":true,"name":"外汇","objectId":"559e37cbe4b0796c19615afe","createdAt":"2015-07-09T08:58:51.463Z","updatedAt":"2015-07-09T08:58:51.463Z"}];
-				var userinfo = {"username":"fu65748","emailVerified":false,"mobilePhoneVerified":false,"objectId":"559e2843e4b07a1ae5770125","createdAt":"2015-07-09T07:52:35.684Z","updatedAt":"2015-07-09T07:52:35.684Z"};
-				username = userinfo.username;
-				res.render('chat.ejs', {chatRooms: chatRooms, username: username});
+				//chatRooms = [{"tr":true,"name":"OpenConf","objectId":"559e314ae4b0796c1960d7f4","createdAt":"2015-07-09T08:31:06.043Z","updatedAt":"2015-07-09T08:31:06.043Z"},{"tr":true,"name":"股票","objectId":"559e37a1e4b0796c196157c7","createdAt":"2015-07-09T08:58:09.104Z","updatedAt":"2015-07-09T08:58:09.104Z"},{"tr":true,"name":"期货","objectId":"559e37bce4b0796c196159a3","createdAt":"2015-07-09T08:58:36.434Z","updatedAt":"2015-07-09T08:58:36.434Z"},{"tr":true,"name":"外汇","objectId":"559e37cbe4b0796c19615afe","createdAt":"2015-07-09T08:58:51.463Z","updatedAt":"2015-07-09T08:58:51.463Z"}];
+				//var userinfo = {"username":"fu65748","emailVerified":false,"mobilePhoneVerified":false,"objectId":"559e2843e4b07a1ae5770125","createdAt":"2015-07-09T07:52:35.684Z","updatedAt":"2015-07-09T07:52:35.684Z"};
+				username = req.AV.user.username;
+				res.render('chat.ejs', {chatRooms: results, username: username});
 				
 			},
 			error: function(error) {
