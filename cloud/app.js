@@ -41,8 +41,6 @@ app.post('/login', function(req, res) {
 			success:function(results) {
 				chatRooms = results;
 				username = req.AV.user.username;
-				res.send(req.AV.user);
-
 				res.render('chat.ejs', {chatRooms: chatRooms, username: username});
 				
 			},
