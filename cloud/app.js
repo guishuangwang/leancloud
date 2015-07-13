@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var AV = require('leanengine');
 
-var chatRooms;
+var chatRooms, username;
 
 var APP_ID ='k3nd81u9ze5gwxxhx0mrwt8bcmce9k55lxn8vny9o27n88tr'; // your app id
 var APP_KEY ='pbvztq1cktzh2i3hauk5h50uudwxe8t2uxuo1pggom1bvt8m'; // your app key
@@ -39,7 +39,9 @@ app.post('/login', function(req, res) {
 	AV.User.logIn(req.body.username, req.body.password).then(function() {
 		query.find({
 			success:function(results) {
-				res.render('chat.ejs', {chatRooms: JSON.parse(results), username: JSON.parse(req.AV.user)});
+				chatRooms = JSON.parse(results);
+				username = JSON.parse(req.AV.user);
+				res.render('chat.ejs', {chatRooms: chatRooms, username: username});
 			},
 			error: function(error) {
 				console.log("Error: " + error.code + " " + error.message);
