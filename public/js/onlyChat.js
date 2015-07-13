@@ -69,7 +69,7 @@ function home(){
 function loadChatHistory(id_partner){
 
 	// loading the history
-	$('.messages_container').html('<br/><br/><div class="text-center"><img src="'+root+'/img/myloader_2.gif"/></div>');
+	$('.messages_container').html('<br/><br/><div class="text-center"><img src="'+root+'img/myloader_2.gif"/></div>');
 	/*
 	$('.messages_container').load(root+'user/loadChatBetween/'+id_partner, function(){
 		$(".messages_container").animate({"scrollTop": $('.messages_container')[0].scrollHeight}, "slow");
