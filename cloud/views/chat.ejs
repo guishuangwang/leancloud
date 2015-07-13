@@ -36,16 +36,19 @@
 					</div>
 
 					<div class="list-group connected_users">
-						<a href="#" onclick="chatWithMe(this); return false;" data-id="6102639" data-age="43" data-username="Wifeadrunk😡" data-city="Alabama" data-country="United States" data-sexe="male" class="list-group-item homme">
+						<% chatRooms.forEach(function(room) { %>
+						<a href="#" onclick="chatWithMe(this); return false;" data-id= <%= room.objectId %>  data-name=  <%= room.name %> class="list-group-item homme">
 						<img class="img-thumbnail small" src="/img/male_small.png">
-						<h4 class="list-group-item-heading">roomname </h4>
+						<h4 class="list-group-item-heading"><%= room.name %></h4>
 						<p class="list-group-item-text">room information</p>
 						<i class="icon-chevron-right"></i>
-						</a>
+						</a>						
+						<% }) %>
 					</div>
+
 					<div class="panel bottom-controls">
 						<div class="panel-body row">
-							<div class="col-xs-3 text-left">username </div>
+							<div class="col-xs-3 text-left"><%= username %></div>
 							<div class="col-xs-2">
 								<a href="#" class="col-xs-2" alt="Previous Page" onclick="prevPage(); return false;">
 								<i class="icon-chevron-left icon-2x"></i>
@@ -73,7 +76,7 @@
 					<div class="row">
 						<div class="col-md-12 top_ads">
 							<p class="alert alert-info intro">
-							<strong style='font-size:20px;'><img class="img-thumbnail pull-right" src="/img/avatar.jpg"/> 欢迎回来 username！</strong><br/><br/>
+							<strong style='font-size:20px;'><img class="img-thumbnail pull-right" src="/img/avatar.jpg"/> 欢迎回来 <%= username %>！</strong><br/><br/>
 							本应用是一个基于leancloud云服务的聊天demo!
 							</p>
 						</div>
