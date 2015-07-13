@@ -3,6 +3,8 @@ var express = require('express');
 var app = express();
 var AV = require('leanengine');
 
+var chatRooms;
+
 var APP_ID ='k3nd81u9ze5gwxxhx0mrwt8bcmce9k55lxn8vny9o27n88tr'; // your app id
 var APP_KEY ='pbvztq1cktzh2i3hauk5h50uudwxe8t2uxuo1pggom1bvt8m'; // your app key
 var MASTER_KEY =''; // your app master key
@@ -19,6 +21,10 @@ app.use(AV.Cloud);
 // 加载 cookieSession 以支持 AV.User 的会话状态
 app.use(AV.Cloud.CookieSession({secret: 'JYH secret', maxAge: 3600000, fetchUser: true}));
 
+//query all the chat rooms
+var query = new AV.Query('_Conversation');
+query.equalTo("tr", true);
+
 // 使用 Express 路由 API 服务 /hello 的 HTTP GET 请求
 app.get('/hello', function(req, res) {
   res.render('hello', { message: 'Congrats, you just set up your app!' });
@@ -31,10 +37,14 @@ app.get('/login', function(req, res) {
 //点击登录页面的提交将出发下列函数
 app.post('/login', function(req, res) {
 	AV.User.logIn(req.body.username, req.body.password).then(function() {
-		//登录成功，AV.Cloud.CookieSession 会自动将登录用户信息存储到 cookie跳转到profile页面。
-		console.log('signin successfully: %j', req.AV.user);
-    	//res.redirect('/profile');
-    	res.render('chat.ejs');
+		query.find({
+			success:function(results) {
+				res.send(results);
+			},
+			error: function(error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
 	},function(error) {
 		res.redirect('/hello');
 	});
