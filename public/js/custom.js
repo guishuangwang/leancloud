@@ -29,6 +29,7 @@ $(document).ready( function() {
 	});
 	
 	// login form stuff & subscribe form validation on submit
+	/*
 	$('form.loginNewMemberForm').bind('submit', function (e) {
             var info = $("form.loginNewMemberForm").serialize();
 			var username = $(this).find('input[name=username]').val();
@@ -155,6 +156,7 @@ $(document).ready( function() {
 			}
 			
     });
+*/
     
     // fade popover on textfield hovers
     $('#username, #password_1, #email').focus(function(){
