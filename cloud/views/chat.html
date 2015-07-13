@@ -1,0 +1,135 @@
+<% include header.ejs %>
+
+<div class='container'>
+	<div class="navbar navbar-default">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">聊天室</a>
+		</div>
+		<div class="navbar-collapse collapse navbar-right">
+			<ul class="nav navbar-nav">
+				<li><a href="#"><i class="icon-star"></i> 注册</a></li>
+				<li><a href="#"><i class="icon-gear"></i> 设置</a></li>
+				<li><a href="/logout"><i class="icon-off"></i> 退出</a></li>
+			</ul>
+		</div> 
+	</div>
+
+	<div class="col-md-12 chat_box_container ">
+		<div class="row">
+			<div class='connected_container'>
+				<div class="col-md-4 left_part">
+					<div class="panel top-controls">
+						<div class="panel-body row">
+							<a href="#" class="col-xs-2 gold" title="1st page of connected users" onclick="home(); return false;">
+							<i class="icon-home icon-2x"></i>
+							</a>
+							<a href="#" class="col-xs-2" title="Chat History" onclick="getHistory(); return false;">
+							<i class="icon-th-list icon-2x"></i>
+							</a>
+							<a href="#" class="col-xs-2 messages" title="Inbox" onclick="getInbox(); return false;" style="color: rgb(66, 139, 202);">
+							<i class="icon-envelope icon-2x"></i>
+							</a>
+							<a href="#" class="col-xs-2" title="Search" onclick="getSearchForm(); return false;">
+							<i class="icon-search icon-2x"></i>
+							</a>
+						</div>
+					</div>
+
+					<div class="list-group connected_users">
+						<% chatRooms.forEach(function(room) { %>
+						<a href="#" onclick="chatWithMe(this); return false;" data-id= <%= room.objectId %>  data-name=  <%= room.name %> class="list-group-item homme">
+						<img class="img-thumbnail small" src="/img/male_small.png">
+						<h4 class="list-group-item-heading"><%= room.name %></h4>
+						<p class="list-group-item-text">room information</p>
+						<i class="icon-chevron-right"></i>
+						</a>						
+						<% }) %>
+					</div>
+
+					<div class="panel bottom-controls">
+						<div class="panel-body row">
+							<div class="col-xs-3 text-left"><%= username %></div>
+							<div class="col-xs-2">
+								<a href="#" class="col-xs-2" alt="Previous Page" onclick="prevPage(); return false;">
+								<i class="icon-chevron-left icon-2x"></i>
+								</a>
+							</div>
+							<div class="col-xs-2">
+								<a href="#" class="col-xs-2" title="Refresh Users List" onclick="refresh(); return false;">
+								<i class="icon-refresh icon-2x"></i>
+								</a>
+							</div>
+							<div class="col-xs-2">
+								<a href="#" class="col-xs-2" title="Next Page" onclick="nextPage(); return false;">
+								<i class="icon-chevron-right icon-2x"></i>
+								</a>
+							</div>
+							<div class="col-xs-3 text-right">Page 1/<span class="totalPages">118</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-8 right_part hidden-sm">
+				<div class="chatbox_body hidden-xs">
+					<div class="row">
+						<div class="col-md-12 top_ads">
+							<p class="alert alert-info intro">
+							<strong style='font-size:20px;'><img class="img-thumbnail pull-right" src="/img/avatar.jpg"/> 欢迎回来 <%= username %>！</strong><br/><br/>
+							本应用是一个基于leancloud云服务的聊天demo!
+							</p>
+						</div>
+						<div class="col-md-12 body_ads toggle">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 medium_and_large">
+								</div>
+								<div class='col-lg-12 visible-lg large'>
+								</div>
+							</div>
+						</div>
+						<div class="chat_container col-lg-12 toggle">
+							<div class="alert alert-info intro">
+								<ul>
+									<li>基于leancloud后端云服务 + 云代码来实现实时通信功能</li>
+									<li>应用使用nodejs的Express框架部署在leancloud提供的web hosting上</li>
+									<li>移动端可以通过相应SDK调用云服务和云代码</li>
+								</ul>
+							</div>
+							<p class="alert alert-warning intro">
+								<strong>注意：</strong> 如果您长时间处于不活动状态，将会自动断开连接<br/>
+							</p>
+							<div class="chat_messages hideme" id="chat_messages">
+								<div class="panel">
+									<div class="panel-body">
+										<h4>Roomname</h4>
+										<span>room Infos</span>
+										<div class='user_pic'>
+										</div>
+									</div>
+								</div>
+								<div class="messages_container" id="messages_container">
+								</div>
+								<div class="chat_input">
+									<div class="alert alert-success hideme"><strong>Good!</strong> You message have been sent successfully!</div>
+									<form name='msg' id='msg'>
+										<input type='text' class="form-control msg_content" name='msg_content' id='msg_content' palceholder='say hi!'/>
+										<a class="btn btn-info" href="#" onclick="$('.smilies').toggle(); return false;">&nbsp;<i class='icon-smile'></i>&nbsp;</a>
+										<a class="btn btn-success sendMsg" href="#" onclick="sendMsg(); return false;">发送</a>
+										<div class="clear"></div>
+									</form>
+								</div>
+
+							</div>
+						</div>
+						<div class="inbox_container col-md-12 toggle"></div>
+						<div class="search_form_container col-md-12 toggle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% include footer.ejs %>
+
