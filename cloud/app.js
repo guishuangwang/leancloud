@@ -39,9 +39,13 @@ app.post('/login', function(req, res) {
 	AV.User.logIn(req.body.username, req.body.password).then(function() {
 		query.find({
 			success:function(results) {
+				
 				chatRooms = JSON.parse(results);
 				username = JSON.parse(req.AV.user);
-				res.render('chat.ejs', {chatRooms: chatRooms, username: username});
+				res.send(chatRooms, username);
+
+				//res.render('chat.ejs', {chatRooms: chatRooms, username: username});
+				
 			},
 			error: function(error) {
 				console.log("Error: " + error.code + " " + error.message);
