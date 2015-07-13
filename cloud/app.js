@@ -12,6 +12,7 @@ AV.initialize(APP_ID, APP_KEY, MASTER_KEY);
 // App 全局配置
 app.set('views','cloud/views');   // 设置模板目录
 app.set('view engine', 'ejs');    // 设置 template 引擎
+app.use(express.static(__dirname + '/public'));
 app.use(express.bodyParser());    // 读取请求 body 的中间件
 app.use(AV.Cloud);
 
