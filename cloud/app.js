@@ -40,9 +40,9 @@ app.post('/login', function(req, res) {
 		query.find({
 			success:function(results) {
 				
-				chatRooms = JSON.parse(results);
-				username = JSON.parse(req.AV.user);
-				res.send(chatRooms, username);
+				//chatRooms = JSON.parse(results);
+				//username = JSON.parse(req.AV.user);
+				res.send(results);
 
 				//res.render('chat.ejs', {chatRooms: chatRooms, username: username});
 				
