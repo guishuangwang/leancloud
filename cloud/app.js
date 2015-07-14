@@ -3,8 +3,6 @@ var express = require('express');
 var app = express();
 var AV = require('leanengine');
 
-var loginUser;
-
 var APP_ID ='k3nd81u9ze5gwxxhx0mrwt8bcmce9k55lxn8vny9o27n88tr'; // your app id
 var APP_KEY ='pbvztq1cktzh2i3hauk5h50uudwxe8t2uxuo1pggom1bvt8m'; // your app key
 var MASTER_KEY =''; // your app master key
@@ -36,7 +34,7 @@ app.get('/login', function(req, res) {
 
 //点击登录页面的提交将出发下列函数
 app.post('/login', function(req, res) {
-	AV.User.logIn(req.body.username, req.body.password).then(function() {
+	AV.User.logIn(req.body.username, req.body.password).then(function(user) {
 		query.find({
 			success:function(results) {
 				//chatRooms = [{"tr":true,"name":"OpenConf","objectId":"559e314ae4b0796c1960d7f4","createdAt":"2015-07-09T08:31:06.043Z","updatedAt":"2015-07-09T08:31:06.043Z"},{"tr":true,"name":"股票","objectId":"559e37a1e4b0796c196157c7","createdAt":"2015-07-09T08:58:09.104Z","updatedAt":"2015-07-09T08:58:09.104Z"},{"tr":true,"name":"期货","objectId":"559e37bce4b0796c196159a3","createdAt":"2015-07-09T08:58:36.434Z","updatedAt":"2015-07-09T08:58:36.434Z"},{"tr":true,"name":"外汇","objectId":"559e37cbe4b0796c19615afe","createdAt":"2015-07-09T08:58:51.463Z","updatedAt":"2015-07-09T08:58:51.463Z"}];
@@ -45,8 +43,7 @@ app.post('/login', function(req, res) {
 				for(var i = 0; i < results.length; i++) {
 					rooms[i] = results[i].toJSON();
 				}
-				loginUser = (req.AV.user).toJSON();
-				res.render('chat.ejs', {chatRooms: rooms, username: loginUser.username});
+				res.render('chat.ejs', {chatRooms: rooms, username: user.username});
 			},
 			error: function(error) {
 				console.log("Error: " + error.code + " " + error.message);
