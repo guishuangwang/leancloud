@@ -45,8 +45,8 @@ app.post('/login', function(req, res) {
 				for(var i = 0; i < results.length; i++) {
 					rooms[i] = results[i].toJSON();
 				}
-				loginUser = req.AV.user;
-				res.render('chat.ejs', {chatRooms: rooms, username: loginUser.username, test1: rooms, test2: loginUser});
+				loginUser = (req.AV.user).toJSON();
+				res.render('chat.ejs', {chatRooms: rooms, username: loginUser.username});
 			},
 			error: function(error) {
 				console.log("Error: " + error.code + " " + error.message);
