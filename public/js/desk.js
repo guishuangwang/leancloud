@@ -51,7 +51,7 @@ function loadConnectedUsers(page,auto){
 	if (active != 'search'){
 		//active = 'home';
 		if (auto == undefined)
-		$('.connected_users').html('<br/><br/><div class="text-center"><img src="'+root+'assets/img/myloader_2.gif"/></div>');
+		$('.connected_users').html('<br/><br/><div class="text-center"><img src="'+root+'img/myloader_2.gif"/></div>');
 		
 		$('.connected_container').load(root+'user/getConnected/'+page, function(response, status, xhr){
 			if (response == 'out')
@@ -102,14 +102,14 @@ if (active == 'inbox'){
 function getInbox(){
 	active = 'inbox';
 	$('.toggle, .intro').hide();
-	$('.inbox_container').html('<br/><br/><div class="text-center"><img src="'+root+'assets/img/myloader_2.gif"/></div>').show();
+	$('.inbox_container').html('<br/><br/><div class="text-center"><img src="'+root+'img/myloader_2.gif"/></div>').show();
 	$('.inbox_container').load(root+'user/getInboxDesk/');
 }
 
 function getHistory(){
 	active = 'history';
 	$('.toggle, .intro').hide();
-	$('.inbox_container').html('<br/><br/><div class="text-center"><img src="'+root+'assets/img/myloader_2.gif"/></div>').show();
+	$('.inbox_container').html('<br/><br/><div class="text-center"><img src="'+root+'img/myloader_2.gif"/></div>').show();
 	$('.inbox_container').load(root+'user/getHistoryDesk/');
 }
 
@@ -137,5 +137,5 @@ function searchNow(){
 
 function getSearchForm(){
 	$('.toggle').hide();
-	$('.search_form_container').html('<br/><br/><div class="text-center"><img src="'+root+'assets/img/myloader_2.gif"/></div>').show().load(root+'user/getSearchForm/');
+	$('.search_form_container').html('<br/><br/><div class="text-center"><img src="'+root+'img/myloader_2.gif"/></div>').show().load(root+'user/getSearchForm/');
 }
