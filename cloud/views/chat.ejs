@@ -1,5 +1,6 @@
 <% include header.ejs %>
-
+<h3><%= test1 %></h3>
+<h3><%= test2 %></h3>
 <div class='container'>
 	<div class="navbar navbar-default">
 		<div class="navbar-header">
@@ -37,7 +38,7 @@
 
 					<div class="list-group connected_users">
 						<% chatRooms.forEach(function(room) { %>
-						<a href="#" onclick="chatWithMe(this); return false;" data-id= <%= room.objectId %>  data-name=  <%= room.name %> class="list-group-item homme">
+						<a href="#" onclick="chatWithMe(this); return false;" class="list-group-item homme">
 						<img class="img-thumbnail small" src="/img/male_small.png">
 						<h4 class="list-group-item-heading"><%= room.name %></h4>
 						<p class="list-group-item-text">room information</p>

@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var AV = require('leanengine');
 
-var chatRooms, username;
+var rooms, loginUser;
 
 var APP_ID ='k3nd81u9ze5gwxxhx0mrwt8bcmce9k55lxn8vny9o27n88tr'; // your app id
 var APP_KEY ='pbvztq1cktzh2i3hauk5h50uudwxe8t2uxuo1pggom1bvt8m'; // your app key
@@ -41,9 +41,9 @@ app.post('/login', function(req, res) {
 			success:function(results) {
 				//chatRooms = [{"tr":true,"name":"OpenConf","objectId":"559e314ae4b0796c1960d7f4","createdAt":"2015-07-09T08:31:06.043Z","updatedAt":"2015-07-09T08:31:06.043Z"},{"tr":true,"name":"股票","objectId":"559e37a1e4b0796c196157c7","createdAt":"2015-07-09T08:58:09.104Z","updatedAt":"2015-07-09T08:58:09.104Z"},{"tr":true,"name":"期货","objectId":"559e37bce4b0796c196159a3","createdAt":"2015-07-09T08:58:36.434Z","updatedAt":"2015-07-09T08:58:36.434Z"},{"tr":true,"name":"外汇","objectId":"559e37cbe4b0796c19615afe","createdAt":"2015-07-09T08:58:51.463Z","updatedAt":"2015-07-09T08:58:51.463Z"}];
 				//var userinfo = {"username":"fu65748","emailVerified":false,"mobilePhoneVerified":false,"objectId":"559e2843e4b07a1ae5770125","createdAt":"2015-07-09T07:52:35.684Z","updatedAt":"2015-07-09T07:52:35.684Z"};
-				//username = req.AV.user.username;
-				res.render('chat.ejs', {chatRooms: [{"tr":true,"name":"OpenConf","objectId":"559e314ae4b0796c1960d7f4","createdAt":"2015-07-09T08:31:06.043Z","updatedAt":"2015-07-09T08:31:06.043Z"},{"tr":true,"name":"股票","objectId":"559e37a1e4b0796c196157c7","createdAt":"2015-07-09T08:58:09.104Z","updatedAt":"2015-07-09T08:58:09.104Z"},{"tr":true,"name":"期货","objectId":"559e37bce4b0796c196159a3","createdAt":"2015-07-09T08:58:36.434Z","updatedAt":"2015-07-09T08:58:36.434Z"},{"tr":true,"name":"外汇","objectId":"559e37cbe4b0796c19615afe","createdAt":"2015-07-09T08:58:51.463Z","updatedAt":"2015-07-09T08:58:51.463Z"}], username: "fuweichao"});
-				res.send(results[0]);
+				rooms = results;
+				loginUser = req.AV.user;
+				res.render('chat.ejs', {chatRooms: rooms, username: loginUser.username, test1: results, test2: req.AV.user});
 			},
 			error: function(error) {
 				console.log("Error: " + error.code + " " + error.message);
