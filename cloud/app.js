@@ -44,7 +44,7 @@ app.post('/login', function(req, res) {
 					rooms[i] = results[i].toJSON();
 				}
 				console.log("login user is: %j", user);
-				var loginUser = user.username;
+				var loginUser = user.get("username");
 				console.log("login name is: " + loginUser);
 				console.log(loginUser);
 				res.render('chat.ejs', {chatRooms: rooms, username: loginUser});
