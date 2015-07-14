@@ -35,8 +35,6 @@ app.get('/login', function(req, res) {
 //点击登录页面的提交将出发下列函数
 app.post('/login', function(req, res) {
 	AV.User.logIn(req.body.username, req.body.password).then(function(user) {
-		console.log("login user is: %j", user);
-		console.log("login user is:" + user);
 		query.find({
 			success:function(results) {
 				//chatRooms = [{"tr":true,"name":"OpenConf","objectId":"559e314ae4b0796c1960d7f4","createdAt":"2015-07-09T08:31:06.043Z","updatedAt":"2015-07-09T08:31:06.043Z"},{"tr":true,"name":"股票","objectId":"559e37a1e4b0796c196157c7","createdAt":"2015-07-09T08:58:09.104Z","updatedAt":"2015-07-09T08:58:09.104Z"},{"tr":true,"name":"期货","objectId":"559e37bce4b0796c196159a3","createdAt":"2015-07-09T08:58:36.434Z","updatedAt":"2015-07-09T08:58:36.434Z"},{"tr":true,"name":"外汇","objectId":"559e37cbe4b0796c19615afe","createdAt":"2015-07-09T08:58:51.463Z","updatedAt":"2015-07-09T08:58:51.463Z"}];
@@ -45,7 +43,11 @@ app.post('/login', function(req, res) {
 				for(var i = 0; i < results.length; i++) {
 					rooms[i] = results[i].toJSON();
 				}
-				res.render('chat.ejs', {chatRooms: rooms, username: user.username});
+				console.log("login user is: %j", user);
+				var loginUser = user.username;
+				console.log("login name is: " + loginUser);
+				console.log(loginUser);
+				res.render('chat.ejs', {chatRooms: rooms, username: loginUser});
 			},
 			error: function(error) {
 				console.log("Error: " + error.code + " " + error.message);
