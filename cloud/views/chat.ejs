@@ -38,9 +38,9 @@
 					<div class="list-group connected_users">
 						<% chatRooms.forEach(function(room) { %>
 						<a href="#" onclick="chatWithMe(this); return false;" class="list-group-item homme">
-						<img class="img-thumbnail small" src="/img/male_small.png">
+						<img class="img-thumbnail small" src=<%= room.imgSrc %>>
 						<h4 class="list-group-item-heading"><%= room.name %></h4>
-						<p class="list-group-item-text">room information</p>
+						<p class="list-group-item-text"><%= room.roomInfo %></p>
 						<i class="icon-chevron-right"></i>
 						</a>						
 						<% }) %>
