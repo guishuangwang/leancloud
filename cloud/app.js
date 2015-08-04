@@ -25,7 +25,7 @@ query.equalTo("tr", true);
 
 // 使用 Express 路由 API 服务 /hello 的 HTTP GET 请求
 app.get('/loginError', function(req, res) {
-  res.render('loginError', { message: '输入有误，请重新输入！' });
+  res.render('loginError', { message: '用户名密码输入有误，请重新输入！' });
 });
 
 app.get('/chatrooms', function(req, res) {
@@ -51,8 +51,8 @@ app.get('/chatrooms', function(req, res) {
 });
 
 app.get('/login', function(req, res) {
-	res.send('index.html');
-})
+	res.render('index');
+});
 
 //点击登录页面的提交将出发下列函数
 app.post('/login', function(req, res) {
