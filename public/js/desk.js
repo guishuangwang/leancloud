@@ -4,24 +4,17 @@ function chatWithMe(partner){
 	$('.intro').remove();
 	
 	// getting users'stuff
-	var id_partner 	 = $(partner).attr('data-id');
-	var sexe = $(partner).attr('data-sexe');
-	var username = $(partner).attr('data-username');
-	var city = $(partner).attr('data-city');
-	var country = $(partner).attr('data-country');
-	var age = $(partner).attr('data-age');
+	var roomname = $(partner).attr('data-roomname');
+	var info = $(partner).attr('data-info');
+	var roomId = $(partner).attr('data-id');
 	var pic = $(partner).find('img.img-thumbnail').clone().addClass('pull-right').removeClass('pull-left');
 	
 	// hide inbox
 	$('.inbox_container').hide();
 	
-	if (sexe == 'homme') sexe = 'male';
-	else if (sexe == 'femme') sexe = 'female';
-	
 	// inserting info in chat
-	$('.chat_messages .panel .panel-body h4').html(username);
-	$('.chat_messages .panel .panel-body span').html(sexe+", "+age+" Years old, from "+city+", "+country);
-	$('.chat_messages .panel .panel-body span').attr('data-id',id_partner);
+	$('.chat_messages .panel .panel-body h4').html(roomname);
+	$('.chat_messages .panel .panel-body span').html(info);
 	$('.chat_messages .panel .panel-body .user_pic').html('').append(pic);
 	
 	// hide ads & show chatbox
@@ -34,16 +27,13 @@ function chatWithMe(partner){
 	$('input[type=text].msg_content').focus();
 	
 	// gestion des classes : active/femme/homme
+	/*
 	$('.connected_users .list-group-item').removeClass('active').each(function(){$(this).addClass($(this).attr('data-sexe'));});
 	$(partner).removeClass(sexe).addClass('active');
+	*/
 	
 	// loading the history
-	loadChatHistory(id_partner);
-	
-	/*
-if (active == 'inbox')
-		getInbox();
-*/
+	loadChatHistory(roomId);
 }
 
 function loadConnectedUsers(page,auto){
