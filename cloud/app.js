@@ -24,32 +24,42 @@ var query = new AV.Query('_Conversation');
 query.equalTo("tr", true);
 
 // 使用 Express 路由 API 服务 /hello 的 HTTP GET 请求
-app.get('/hello', function(req, res) {
-  res.render('hello', { message: 'Congrats, you just set up your app!' });
+app.get('/loginError', function(req, res) {
+  res.render('loginError', { message: '输入有误，请重新输入！' });
 });
 
 app.get('/chatrooms', function(req, res) {
-	query.find({
-		success:function(results) {
-			var rooms = [];
-			for(var i = 0; i < results.length; i++) {
-				rooms[i] = results[i].toJSON();
+	if(req.AV.user) {
+		var user = req.AV.user;
+		query.find({
+			success:function(results) {
+				var rooms = [];
+				for(var i = 0; i < results.length; i++) {
+					rooms[i] = results[i].toJSON();
+				}
+				var loginUser = user.get("username");
+				res.render('chat.ejs', {chatRooms: rooms, username: loginUser});
+			},
+			error: function(error) {
+				console.log("Error: " + error.code + " " + error.message);
 			}
-			var loginUser = user.get("username");
-			res.render('chat.ejs', {chatRooms: rooms, username: loginUser});
-		},
-		error: function(error) {
-			console.log("Error: " + error.code + " " + error.message);
-		}
-	});
+		});		
+	}
+	else {
+		res.redirect('/login');
+	}
 });
+
+app.get('/login', function(req, res) {
+	res.send('index.html');
+})
 
 //点击登录页面的提交将出发下列函数
 app.post('/login', function(req, res) {
 	AV.User.logIn(req.body.username, req.body.password).then(function(user) {
 		res.redirect('/chatRooms');
 	},function(error) {
-		res.redirect('/hello');
+		res.redirect('/loginError');
 	});
 });
 

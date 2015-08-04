@@ -1,0 +1,128 @@
+<html>
+<head>
+	<title>聊天室</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="./css/style.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="./css/font-awesome.css">
+	<link rel="stylesheet" href="./css/animate.css">
+	<!--[if IE 7]>
+			  <link rel="stylesheet" href="http://www.chatib.com/assets/css/font-awesome-ie7.min.css">
+			<![endif]-->
+</head>
+
+<body>
+	<!--
+	<audio id="myNotif">
+		<source src="http://www.chatib.com/assets/sound/notif.mp3" type="audio/mpeg"></source>
+		<source src="http://www.chatib.com/assets/sound/notif.wav" type="audio/wav"></source>
+	</audio>
+	-->
+
+	<div class='container'>
+		<div class="navbar navbar-default">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">聊天室</a>
+			</div>
+			<div class="navbar-collapse collapse navbar-right">
+				<ul class="nav navbar-nav">
+				<li><a href="#">
+				<i class="icon-home"></i> 主页
+				</a></li>
+				<li><a href="./signup_form"><i class="icon-star"></i> 注册</a></li>
+				<li><a href="./member"><i class="icon-key gold"></i> 登录</a></li>
+				</ul>
+			</div> 
+		</div>
+		<div class="row">
+			<div class="col-lg-6 visible-lg">
+				<div class='hidden-sm welcome_div jumbotron'>
+					<h1><span>聊天室</span></h1>
+					<div class="col-lg-12">
+						<h2 class="welcome_p">在线聊天室，基于leancloud后端云服务 + 云代码来实现实时通信功能，本应用使用nodejs的Express框架部署在leancloud提供的web hosting上。</h2>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 block">
+							<i class='icon-smile icon-2x'></i>
+							性能优异
+							<p>消息送达速度：能在秒级送达。通信性能优异</p>
+						</div> 
+						<div class="col-lg-6 block">
+							<i class='icon-tablet icon-2x'></i>
+							移动端支持
+							<p>支持移动端通过相应的SDK调用云服务和云代码</p>
+						</div> 
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 text-center ">
+				<form class="form-horizontal col-md-12 text-center loginNewMemberForm" action='/login' method="POST">
+					<div class='title'>
+						<br/>
+						<span>登录</span>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-xs-5 text-right control lbl">用户名</div>
+						<div class="col-xs-7 text-left  control">
+							<input type="text" value="" name='username' id='username' class="username form-control" placeholder="用户名" data-placement="bottom" data-toggle="popover" title="" data-content="Username empty or not available, please try another one." data-trigger='manual' data-original-title="Error"/>
+						</div>
+					</div>
+					<!--
+					<div class="row">
+						<div class="col-xs-5 text-right control lbl">性别</div>
+						<div class="col-xs-7 text-left  control">
+							<label><input type="radio" value="homme" name="sexe" checked /> <img src="../img/male_small.png"/> 男 </label>
+							&nbsp;
+							<label><input type="radio" value="femme" name="sexe"/> <img src="../img/female_small.png"/> 女 </label>
+						</div>
+					</div>
+	-->
+					<div class="row">
+						<div class="col-xs-5 text-right control lbl">密码</div>
+						<div class="col-xs-7 text-left  control">
+							<input type="text" value="" name='password' id='password' class="password form-control" placeholder="密码" data-placement="bottom" data-toggle="popover" title="" data-content="Password empty or not available, please try another one." data-trigger='manual' data-original-title="Error"/>
+						</div>						
+					</div>
+
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<input type="reset" class="btn btn-info btn-lg" value="清除"/>
+							<input type="submit" class="btn btn-success btn-lg" value="开始聊天!"/>
+						</div>
+					</div>
+					<br/>
+				</form>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<hr/>
+			<div class="col-lg-12 text-center">
+				<a href="#">FAQ</a> -
+				<a href="#">Privacy Policy</a> -
+				<a href="#">Contact</a><br/>
+				wexmarket.com 2009 - 2015 &copy;
+				<br/><br/>
+			</div>
+		</div>
+	</div>
+
+<script src="./js/jquery-1.9.1.min.js" charset="utf-8"></script>
+<script src="./js/bootstrap.min.js" charset="utf-8"></script>
+<script src="./js/custom.js" charset="utf-8"></script>
+<script src="./js/desk.js" charset="utf-8"></script>
+
+</body>
+</html>
