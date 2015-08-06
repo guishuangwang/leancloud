@@ -37,7 +37,7 @@
 
 					<div class="list-group connected_users">
 						<% chatRooms.forEach(function(room) { %>
-						<a href="#" onclick="chatWithMe(this); return false;" class="list-group-item homme" data-roomname=<%= room.name%> data-info=<%= room.roomInfo%> data-id=<%= room.objectId %>>
+						<a href="#" onclick="chatWithMe(this); return false;" class="list-group-item homme" data-client=<%= username%> data-roomname=<%= room.name%> data-info=<%= room.roomInfo%> data-id=<%= room.objectId %>>
 						<img class="img-thumbnail small" src=<%= room.imgSrc %>>
 						<h4 class="list-group-item-heading"><%= room.name %></h4>
 						<p class="list-group-item-text"><%= room.roomInfo %></p>
