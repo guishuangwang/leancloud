@@ -3,6 +3,7 @@ var roomId, clientId, rt, room;
 var connected = false;
 var historyFlag = false;
 var msgTime;
+var chatWindow;
 
 function encodeHTML (source) {
 	return String(source)
@@ -46,12 +47,23 @@ function init () {
 					showMsg('已经加入，可以开始聊天。');
 				});
 				
+				// loading the history
+				loadChatHistory();
+				
 				//receive the message
 				room.receive(function(data) {
 					if(!msgTime) {
 						msgTime = data.timestamp;
 					}
-					showMsg(data);
+					var text = '';
+					var from = data.fromPeerId;
+					if(data.msg.type) {
+						text = data.msg.text;
+					}
+					else {
+						text = data.msg;
+					}
+					showMsg(formatTime(data.timestamp) + " " + encodeHTML(from) + ": " + text, false);
 				});
 
 			}
@@ -100,11 +112,16 @@ function chatWithMe(chatRoom){
 	//initialize the chat room
 	init();
 	
-	// loading the history
-	loadChatHistory(roomId);
+	chatWindow = $("#chat_messages");
+	//bind the scroll event to the chat window.
+	chatWindow.scroll(function() {
+		if(chatWindow.scrollTop < 20) {
+			loadChatHistory();
+		}
+	});
 }
 
-function loadChatHistory(roomId) {
+function loadChatHistory() {
 	if(historyFlag) {
 		return;
 	}
@@ -137,7 +154,7 @@ function sendMsg(){
 		//callback when msg sent successfully
 		// clear input
 		$('#msg_content').val("");
-		showMsg(data.t + msg, false);
+		showMsg(formatTime(data.t) + " " + msg, false);
 	});
 }
 
@@ -149,53 +166,7 @@ function showMsg(msg, isBefore) {
 	}
 	else {
 		$('#messages_container').append(p);
+		//adjust the chat window's scroll bar
+		chatWindow.scrollTop = chatWindow.scrollHeight;
 	}
 }
-
-function loadConnectedUsers(page,auto){
-	
-}
-
-
-
-
-/*
-function getInbox(){
-	active = 'inbox';
-	$('.toggle, .intro').hide();
-	$('.inbox_container').html('<br/><br/><div class="text-center"><img src="'+root+'img/myloader_2.gif"/></div>').show();
-	$('.inbox_container').load(root+'user/getInboxDesk/');
-}
-
-function getHistory(){
-	active = 'history';
-	$('.toggle, .intro').hide();
-	$('.inbox_container').html('<br/><br/><div class="text-center"><img src="'+root+'img/myloader_2.gif"/></div>').show();
-	$('.inbox_container').load(root+'user/getHistoryDesk/');
-}
-
-function searchNow(){
-		var country = $('select[name=pays] option:selected').val();
-		var gender  = $('input[name=sexe]:checked').val()
-		var username= $('#username').val();
-		
-		
-		if (country=='')
-		{
-			country = '0';
-		}
-		
-	
-		if (username == '' || username == undefined)
-		username = '0';
-		
-		active = 'search';
-		$('.bottom-controls').hide();
- 		$('.connected_users').load(root+'user/getSearchResults/'+gender+"/"+country+"/"+username);
-}
-
-function getSearchForm(){
-	$('.toggle').hide();
-	$('.search_form_container').html('<br/><br/><div class="text-center"><img src="'+root+'img/myloader_2.gif"/></div>').show().load(root+'user/getSearchForm/');
-}
-*/
