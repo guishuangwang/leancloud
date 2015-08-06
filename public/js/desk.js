@@ -109,10 +109,10 @@ function chatWithMe(chatRoom){
 	
 	$('input[type=text].msg_content').focus();
 	
+	chatWindow = $("#chat_messages");
 	//initialize the chat room
 	init();
-	
-	chatWindow = $("#chat_messages");
+
 	//bind the scroll event to the chat window.
 	chatWindow.scroll(function() {
 		if(chatWindow.scrollTop < 20) {
@@ -167,6 +167,6 @@ function showMsg(msg, isBefore) {
 	else {
 		$('#messages_container').append(p);
 		//adjust the chat window's scroll bar
-		chatWindow.scrollTop = chatWindow.scrollHeight;
+		chatWindow.scrollTop = chatWindow[0].scrollHeight;
 	}
 }
