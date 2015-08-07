@@ -70,7 +70,7 @@ app.get('/signup_form', function(req, res) {
 app.post('/signup_form', function(req, res) {
 	
 });
-app.post()
+
 //查看用户profile信息
 app.get('/profile', function(req,res) {
 	if(req.AV.user) {
