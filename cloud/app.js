@@ -63,6 +63,14 @@ app.post('/login', function(req, res) {
 	});
 });
 
+//注册用户
+app.get('/signup_form', function(req, res) {
+	res.render('signup_form.ejs');
+});
+app.post('/signup_form', function(req, res) {
+	
+});
+app.post()
 //查看用户profile信息
 app.get('/profile', function(req,res) {
 	if(req.AV.user) {
