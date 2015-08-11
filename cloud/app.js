@@ -23,10 +23,16 @@ app.use(AV.Cloud.CookieSession({secret: 'JYH secret', maxAge: 3600000, fetchUser
 var query = new AV.Query('_Conversation');
 query.equalTo("tr", true);
 
-// 使用 Express 路由 API 服务 /hello 的 HTTP GET 请求
+// error router
+/*
 app.get('/loginError', function(req, res) {
-  res.render('loginError', { message: '用户名密码输入有误，请重新输入！' });
+  res.render('Error', { message: '用户名密码输入有误，请重新输入！' });
 });
+
+app.get('/registerError', function(req, res) {
+	res.render('Error', {message: '用户名或密码不能为空！'});
+})
+*/
 
 app.get('/chatrooms', function(req, res) {
 	if(req.AV.user) {
@@ -59,7 +65,7 @@ app.post('/login', function(req, res) {
 	AV.User.logIn(req.body.username, req.body.password).then(function(user) {
 		res.redirect('/chatRooms');
 	},function(error) {
-		res.redirect('/loginError');
+		res.render('Error', { message: '用户名密码输入有误，请重新输入！' });
 	});
 });
 
@@ -68,7 +74,24 @@ app.get('/signup_form', function(req, res) {
 	res.render('signup_form.ejs');
 });
 app.post('/signup_form', function(req, res) {
-	
+	var username = req.body.username;
+	var password = req.body.password;
+	var sex = req.body.sex;
+	if(!username || username.trim().length ==0 || !password || password.trim().length ==0) {
+		res.render('Error', {message: '用户名或密码不能为空！'});
+	}
+	var user = new AV.User();
+	user.set("username", username);
+	user.set("password", password);
+	user.set("sex", sex);
+	user.signUp(null, {
+		success: function(user) {
+			res.redirect('/login');
+		},
+		error: function(user, err) {
+			res.render('Error', {message: '用户注册失败！'});
+		}
+	})
 });
 
 //查看用户profile信息
@@ -85,7 +108,7 @@ app.get('/profile', function(req,res) {
 app.get('/logout', function(req, res) {
 	// AV.Cloud.CookieSession 将自动清除登录 cookie 信息
 	AV.User.logOut();
-	res.redirect('/profile');
+	res.redirect('/login');
 });
 
 // 最后，必须有这行代码来使 express 响应 HTTP 请求

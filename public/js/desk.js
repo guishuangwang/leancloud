@@ -44,7 +44,7 @@ function init () {
 				room = object;
 				//join this room
 				room.join(function() {
-					showMsg('已经加入，可以开始聊天。');
+					showMsg('您已经加入本聊天室，可以开始聊天。');
 				});
 				
 				// loading the history
@@ -109,7 +109,10 @@ function chatWithMe(chatRoom){
 	
 	$('input[type=text].msg_content').focus();
 	
-	chatWindow = $("#chat_messages");
+	//clear the chat rooms messages
+	$("#messages_container").html("");
+	
+	chatWindow = $("#messages_container");
 	//initialize the chat room
 	init();
 
