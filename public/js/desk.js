@@ -170,6 +170,6 @@ function showMsg(msg, isBefore) {
 	else {
 		$('#messages_container').append(p);
 		//adjust the chat window's scroll bar
-		chatWindow.scrollTop = chatWindow[0].scrollHeight - chatWindow.height();
+		chatWindow.scrollTop(chatWindow[0].scrollHeight - chatWindow.height());
 	}
 }
