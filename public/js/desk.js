@@ -126,8 +126,8 @@ function chatWithMe(chatRoom){
 			else {
 				var more = $("<p class='more' style='text-align: center;'><a style='cursor: pointer; text-decoration: none; font-size: 12px;'>查看更多消息</a></p>");
 				$('#messages_container').prepend(more);
-				more.click(loadChatHistory);
-				hasMore = true;				
+				hasMore = true;	
+				more.click(loadChatHistory);							
 			}
 
 		}
@@ -158,6 +158,7 @@ function loadChatHistory() {
 			}
 			showMsg(formatTime(data[i].timestamp) + " " + encodeHTML(from) + ": " + text, true);
 			$(".more").remove();
+			hasMore = false;	
 		}
 	});
 }
