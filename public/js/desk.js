@@ -119,11 +119,10 @@ function chatWithMe(chatRoom){
 
 	//bind the scroll event to the chat window.
 	chatWindow.scroll(function() {
-		if(chatWindow.scrollTop() === 0) {
-			var more = $("<p style='color: blue; text-align: center;'>点击加载更多</p>");
+		if(chatWindow.scrollTop() <= 5) {
+			var more = $("<p class='more' style='color: blue; text-align: center;'>点击加载更多</p>");
 			$('#messages_container').prepend(more);
 			more.click(loadChatHistory);
-			more.remove();
 		}
 	});
 }
@@ -151,6 +150,7 @@ function loadChatHistory() {
 				text = data[i].msg;
 			}
 			showMsg(formatTime(data[i].timestamp) + " " + encodeHTML(from) + ": " + text, true);
+			$(".more").remove();
 		}
 	});
 }
