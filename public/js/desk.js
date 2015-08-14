@@ -119,8 +119,11 @@ function chatWithMe(chatRoom){
 
 	//bind the scroll event to the chat window.
 	chatWindow.scroll(function() {
-		if(chatWindow.scrollTop() < 20) {
-			loadChatHistory();
+		if(chatWindow.scrollTop() === 0) {
+			var more = $("<p style='color: blue; text-align: center;'>点击加载更多</p>");
+			$('#messages_container').prepend(more);
+			more.click(loadChatHistory);
+			more.remove();
 		}
 	});
 }
