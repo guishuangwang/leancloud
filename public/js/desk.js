@@ -4,6 +4,7 @@ var connected = false;
 var historyFlag = false;
 var msgTime;
 var chatWindow;
+var more;
 
 function encodeHTML (source) {
 	return String(source)
@@ -24,7 +25,7 @@ function formatTime(time) {
 
 function init () {
 	msgTime = undefined;
-	showMsg('正在连接服务器，请等待。。。');
+	showTips('正在连接服务器，请等待。。。');
 	if(connected) {
 		rt.close();
 	}
@@ -37,7 +38,7 @@ function init () {
 	
 	rt.on('open', function() {
 		connected = true;
-		showMsg('服务器连接成功！');
+		showTips('服务器连接成功！');
 		
 		//获取房间实例
 		rt.room(roomId, function(object) {
@@ -45,7 +46,7 @@ function init () {
 				room = object;
 				//join this room
 				room.join(function() {
-					showMsg('您已经加入本聊天室，可以开始聊天。');
+					showTips('您已经加入本聊天室，可以开始聊天。');
 				});
 				
 				// loading the history
@@ -75,11 +76,11 @@ function init () {
 	});
 	
 	rt.on('reuse', function() {
-		showMsg('服务器正在重连，请耐心等待。。。');
+		showTips('服务器正在重连，请耐心等待。。。');
 	});
 	
 	rt.on('error', function() {
-		showMsg('连接遇到错误。。。');
+		showTips('连接遇到错误。。。');
 	});
 }
 
@@ -120,9 +121,13 @@ function chatWithMe(chatRoom){
 	//bind the scroll event to the chat window.
 	chatWindow.scroll(function() {
 		if(chatWindow.scrollTop() <= 1) {
-			var more = $("<p class='more' style='color: blue; text-align: center;'>点击加载更多</p>");
-			$('#messages_container').prepend(more);
-			more.click(loadChatHistory);
+			if(more) return;
+			else {
+				more = $("<a class='more' style='color: blue; text-align: center; text-decoration: none; font-size: 12px;'>查看更多消息</a>");
+				$('#messages_container').prepend(more);
+				more.click(loadChatHistory);				
+			}
+
 		}
 	});
 }
@@ -185,4 +190,11 @@ function showMsg(msg, isBefore) {
 		//adjust the chat window's scroll bar
 		chatWindow.scrollTop(chatWindow[0].scrollHeight - chatWindow.height());
 	}
+}
+
+function showTips(msg) {
+	var tips = $("<p style='color: #999; text-align: center; font-size: 12px;'></p>").text(msg);
+	$('#messages_container').append(tips);
+	//adjust the chat window's scroll bar
+	chatWindow.scrollTop(chatWindow[0].scrollHeight - chatWindow.height());
 }
