@@ -23,6 +23,7 @@ function formatTime(time) {
 }
 
 function init () {
+	msgTime = undefined;
 	showMsg('正在连接服务器，请等待。。。');
 	if(connected) {
 		rt.close();
@@ -118,7 +119,7 @@ function chatWithMe(chatRoom){
 
 	//bind the scroll event to the chat window.
 	chatWindow.scroll(function() {
-		if(chatWindow.scrollTop < 20) {
+		if(chatWindow.scrollTop() < 20) {
 			loadChatHistory();
 		}
 	});
@@ -138,7 +139,15 @@ function loadChatHistory() {
 		var len = data.length;
 		if(len) msgTime = data[0].timestamp;
 		for(var i = len-1; i>=0; i--) {
-			showMsg(data[i], true);
+			var text = '';
+			var from = data[i].fromPeerId;
+			if(data[i].msg.type) {
+				text = data[i].msg.text;
+			}
+			else {
+				text = data[i].msg;
+			}
+			showMsg(formatTime(data[i].timestamp) + " " + encodeHTML(from) + ": " + text, true);
 		}
 	});
 }
@@ -166,6 +175,7 @@ function showMsg(msg, isBefore) {
 	p.innerHTML = msg;
 	if(isBefore) {
 		$('#messages_container').prepend(p);
+		
 	}
 	else {
 		$('#messages_container').append(p);
