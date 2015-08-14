@@ -3,6 +3,7 @@
 
 .message-wrapper {
   position: relative;
+  display: inline-block;
 }
 
 .message-wrapper:last-child {
@@ -18,12 +19,12 @@ img.profile-pic {
 
 img.profile-pic.left {
   left: 10px;
-  top:70px;
+  top:40px;
 }
 
 img.profile-pic.right {
   right: 10px;
-  top:70px;
+  top:40px;
 }
 
 .chat-bubble {
