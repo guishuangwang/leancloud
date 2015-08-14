@@ -119,7 +119,7 @@ function chatWithMe(chatRoom){
 
 	//bind the scroll event to the chat window.
 	chatWindow.scroll(function() {
-		if(chatWindow.scrollTop() <= 5) {
+		if(chatWindow.scrollTop() <= 1) {
 			var more = $("<p class='more' style='color: blue; text-align: center;'>点击加载更多</p>");
 			$('#messages_container').prepend(more);
 			more.click(loadChatHistory);
