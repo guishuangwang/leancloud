@@ -180,7 +180,7 @@ function sendMsg(){
 		// clear input
 		$('#msg_content').val("");
 		//showMsg(formatTime(data.t) + " " + msg, false);
-		showMessages("", msg, formatTime(data.t), false);
+		showMessages(clientId, msg, formatTime(data.t), false);
 	});
 }
 
@@ -207,11 +207,11 @@ function showTips(msg) {
 
 function showMessages(from, msg, timestamp, isBefore) {
 	var message;
-	if(from === "") {
-		message = $("<div class='message-wrapper'><img class='profile-pic right' src='/img/avatar.jpg' ><div class='chat-bubble right'><div class='message'>"+msg+"</div><div class='message-detail'><span class='tips'>"+from+"</span>&nbsp&nbsp<span class='tips'>"+timestamp+"</span></div></div></div>")
+	if(from === clientId) {
+		message = $("<div class='message-wrapper'><img class='profile-pic right' src='/img/avatar.jpg' ><div class='chat-bubble right'><div class='message'>"+msg+"</div><div class='message-detail-self'><span class='tips'>"+from+"</span>&nbsp&nbsp<span class='tips'>"+timestamp+"</span></div></div></div>")
 	}
 	else {
-		message = message = $("<div class='message-wrapper'><img class='profile-pic left' src='/img/avatar.jpg' ><div class='chat-bubble left'><div class='message'>"+msg+"</div><div class='message-detail'><span class='tips'>"+from+"</span>&nbsp&nbsp<span class='tips'>"+timestamp+"</span></div></div></div>")
+		message = message = $("<div class='message-wrapper'><img class='profile-pic left' src='/img/avatar.jpg' ><div class='chat-bubble left'><div class='message'>"+msg+"</div><div class='message-detail-others'><span class='tips'>"+from+"</span>&nbsp&nbsp<span class='tips'>"+timestamp+"</span></div></div></div>")
 	}
 	if(isBefore) {
 		$('#messages_container').prepend(message);
