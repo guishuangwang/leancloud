@@ -124,7 +124,7 @@ function chatWithMe(chatRoom){
 		if(chatWindow.scrollTop() <= 1) {
 			if(hasMore) return;
 			else {
-				var more = $("<a class='more' style='color: blue; text-align: center; text-decoration: none; font-size: 12px;'>查看更多消息</a>");
+				var more = $("<p class='more' style='text-align: center;'><a style='cursor: pointer; text-decoration: none; font-size: 12px;'>查看更多消息</a></p>");
 				$('#messages_container').prepend(more);
 				more.click(loadChatHistory);
 				hasMore = true;				
