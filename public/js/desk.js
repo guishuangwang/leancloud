@@ -205,13 +205,13 @@ function showTips(msg) {
 	chatWindow.scrollTop(chatWindow[0].scrollHeight - chatWindow.height());
 }
 
-function showMessages(from, msg, timestamp, isbefore) {
+function showMessages(from, msg, timestamp, isBefore) {
 	var message;
 	if(from === "") {
-		message = $("<div><img class='profile-pic right' src='' ><div class='chat-bubble right'><div class='message'>"+msg+"</div><div class='message-detail'><span class='bold'>"+from+"</span><span>"+timestamp+"</span></div></div></div>")
+		message = $("<div><img class='profile-pic right' src='/img/avatar.jpg' ><div class='chat-bubble right'><div class='message'>"+msg+"</div><div class='message-detail'><span class='bold'>"+from+"</span><span>"+timestamp+"</span></div></div></div>")
 	}
 	else {
-		message = message = $("<div><img class='profile-pic left' src='' ><div class='chat-bubble left'><div class='message'>"+msg+"</div><div class='message-detail'><span class='bold'>"+from+"</span><span>"+timestamp+"</span></div></div></div>")
+		message = message = $("<div><img class='profile-pic left' src='/img/avatar.jpg' ><div class='chat-bubble left'><div class='message'>"+msg+"</div><div class='message-detail'><span class='bold'>"+from+"</span><span>"+timestamp+"</span></div></div></div>")
 	}
 	if(isBefore) {
 		$('#messages_container').prepend(message);
