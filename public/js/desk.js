@@ -66,7 +66,8 @@ function init () {
 					else {
 						text = data.msg;
 					}
-					showMsg(formatTime(data.timestamp) + " " + encodeHTML(from) + ": " + text, false);
+					//showMsg(formatTime(data.timestamp) + " " + encodeHTML(from) + ": " + text, false);
+					showMessages(from, text, formatTime(data.timestamp), false);
 				});
 
 			}
@@ -156,7 +157,8 @@ function loadChatHistory() {
 			else {
 				text = data[i].msg;
 			}
-			showMsg(formatTime(data[i].timestamp) + " " + encodeHTML(from) + ": " + text, true);
+			//showMsg(formatTime(data[i].timestamp) + " " + encodeHTML(from) + ": " + text, true);
+			showMessages(from, text, formatTime(data[i].timestamp), true);
 			$(".more").remove();
 			hasMore = false;	
 		}
@@ -177,7 +179,8 @@ function sendMsg(){
 		//callback when msg sent successfully
 		// clear input
 		$('#msg_content').val("");
-		showMsg(formatTime(data.t) + " " + msg, false);
+		//showMsg(formatTime(data.t) + " " + msg, false);
+		showMessages("", msg, formatTime(data.t), false);
 	});
 }
 
@@ -200,4 +203,23 @@ function showTips(msg) {
 	$('#messages_container').append(tips);
 	//adjust the chat window's scroll bar
 	chatWindow.scrollTop(chatWindow[0].scrollHeight - chatWindow.height());
+}
+
+function showMessages(from, msg, timestamp, isbefore) {
+	var message;
+	if(from === "") {
+		message = $("<div><img class='profile-pic right' src='' ><div class='chat-bubble right'><div class='message'>"+msg+"</div><div class='message-detail'><span class='bold'>"+from+"</span><span>"+timestamp+"</span></div></div></div>")
+	}
+	else {
+		message = message = $("<div><img class='profile-pic left' src='' ><div class='chat-bubble left'><div class='message'>"+msg+"</div><div class='message-detail'><span class='bold'>"+from+"</span><span>"+timestamp+"</span></div></div></div>")
+	}
+	if(isBefore) {
+		$('#messages_container').prepend(message);
+		
+	}
+	else {
+		$('#messages_container').append(message);
+		//adjust the chat window's scroll bar
+		chatWindow.scrollTop(chatWindow[0].scrollHeight - chatWindow.height());
+	}
 }
