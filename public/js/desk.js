@@ -4,7 +4,7 @@ var connected = false;
 var historyFlag = false;
 var msgTime;
 var chatWindow;
-var more;
+var hasMore = false;
 
 function encodeHTML (source) {
 	return String(source)
@@ -25,6 +25,7 @@ function formatTime(time) {
 
 function init () {
 	msgTime = undefined;
+	hasMore = false;
 	showTips('正在连接服务器，请等待。。。');
 	if(connected) {
 		rt.close();
@@ -121,11 +122,12 @@ function chatWithMe(chatRoom){
 	//bind the scroll event to the chat window.
 	chatWindow.scroll(function() {
 		if(chatWindow.scrollTop() <= 1) {
-			if(more) return;
+			if(hasMore) return;
 			else {
 				more = $("<a class='more' style='color: blue; text-align: center; text-decoration: none; font-size: 12px;'>查看更多消息</a>");
 				$('#messages_container').prepend(more);
-				more.click(loadChatHistory);				
+				more.click(loadChatHistory);
+				hasMore = true;				
 			}
 
 		}
